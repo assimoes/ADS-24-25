@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { useTodosContext } from '../context/TodosContext';
+import { useDispatch } from 'react-redux';
+import { addNewTodo } from '../features/todosSlice';
 
 function TodoForm() {
   const [title, setTitle] = useState('')
-  const { addTodo } = useTodosContext()
-  
+  const dispatch = useDispatch()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if (title.trim()) {
-      addTodo(title)
+      dispatch(addNewTodo(title))
       setTitle('')
     }
   }

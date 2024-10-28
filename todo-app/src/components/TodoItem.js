@@ -6,7 +6,9 @@ function TodoItem ({todo, deleteTodo, toggleComplete}) {
       <span style={{textDecoration: todo.completed ? 'line-through': 'none'}}>
         {todo.title}
       </span>
-      <button onClick={() => toggleComplete(todo.id)}>Complete</button>
+      <button onClick={() => toggleComplete(todo.id)}>
+        {todo.completed ? 'Incomplete' : 'Complete' }
+      </button>
       <button onClick={() => deleteTodo(todo.id)}>Delete</button>
     </div>
   )

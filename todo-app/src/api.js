@@ -1,4 +1,4 @@
-var mockTodos = [
+let mockTodos = [
   { id: 1, title: 'Learn React', completed: false },
   { id: 2, title: 'Build a Todo App', completed: true },
 ];
@@ -18,10 +18,11 @@ export const deleteTodoAPI = (id) =>
 
 export const toggleCompleteAPI = (id) =>
   new Promise((resolve) => {
-    console.log(id)
-    const todo = mockTodos.find((todo) => todo.id === id);
-    if (todo) {
-      todo.completed = !todo.completed;
-    }
-    setTimeout(() => resolve(todo), 500);
+    mockTodos = mockTodos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+
+    const updatedTodo = mockTodos.find((todo) => todo.id === id);
+    
+    setTimeout(() => resolve(updatedTodo), 500);
   });

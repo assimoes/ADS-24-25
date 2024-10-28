@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useTodosContext } from '../context/TodosContext';
 
-function TodoForm({ addTodo }) {
+function TodoForm() {
   const [title, setTitle] = useState('')
-
+  const { addTodo } = useTodosContext()
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     if (title.trim()) {

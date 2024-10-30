@@ -58,12 +58,12 @@ In the output, you'll find options to open the app in a
 
 ## Important reading
 
-[useEffect Hook](https://react.dev/reference/react/useEffect)
-[useState](https://react.dev/reference/react/useState)
-[Tab Navigation](https://docs.expo.dev/router/advanced/tabs/)
-[File-based routing](https://docs.expo.dev/router/advanced/stack/)
-[Touchable](https://reactnative.dev/docs/touchableopacity)
-[Stylesheet](https://reactnative.dev/docs/stylesheet)
+- [useEffect Hook](https://react.dev/reference/react/useEffect)
+- [useState](https://react.dev/reference/react/useState)
+- [Tab Navigation](https://docs.expo.dev/router/advanced/tabs/)
+- [File-based routing](https://docs.expo.dev/router/advanced/stack/)
+- [Touchable](https://reactnative.dev/docs/touchableopacity)
+- [Stylesheet](https://reactnative.dev/docs/stylesheet)
 
 
 

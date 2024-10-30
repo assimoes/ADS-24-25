@@ -1,6 +1,6 @@
-# Welcome to your Expo app 👋
+# ISCTa
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a mobile app that aims to enable students to check-in to classes via QRCode stickers on the classroom desks.
 
 ## Get started
 
@@ -23,28 +23,38 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+## Relevant folders and application files
++ app
+  
+  This folder holds the primary screens and layouts of the app.
+   + (tabs)
+     
+      This folder holds the tabs used in tab navigation
+     + _layout.tsx
+       
+        Layout file for the tabbed navigation, usually setting up common elements like the tab bar and layout structure.
+     + about.tsx
+       
+        A screen file for the 'About' tab
+     + attendance.tsx
+       
+        A screen file that uses the phone camera to scan QRCodes
+     + index.tsx
+       
+       The main screen or home screen, if you like it, within the tab structure. This is the default screen.
+     + +not-found.tsx
+       
+       A custom 'not found' screen that is shown if a user tries to navigate to an invalid route.
+     + checkin.tsx
+       
+       A screen where the student can check the class details after scanning the QRCode and confirm the check-in.
++ components
+  
+  Reusable components for the app, promoting modularity and reducing duplication.
++ constants
+  
+  Holds constant values or settings that are used throughout the app.
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.

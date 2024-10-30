@@ -56,5 +56,12 @@ In the output, you'll find options to open the app in a
   
   Holds constant values or settings that are used throughout the app.
 
+## Important reading
+
+[useEffect Hook](https://react.dev/reference/react/useEffect)
+[Tab Navigation](https://docs.expo.dev/router/advanced/tabs/)
+
+
+
 
 

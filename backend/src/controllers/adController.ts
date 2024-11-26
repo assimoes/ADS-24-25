@@ -48,41 +48,43 @@ export const getAd: RequestHandler = async (req, res) => {
   }
 };
 
-export const createAd: RequestHandler = async (req, res) => {
+export const createAd = async (req: Request, res: Response): Promise<void> => {
   try {
+    const { title, description, price, user: userId, tags } = req.body;
+
+    if (!title || !description || !price || !userId) {
+      res.status(400).json({ error: "Title, description, price, and user ID are required." });
+      return;
+    }
+
     const adRepository = dataSource.getRepository(Ad);
     const userRepository = dataSource.getRepository(User);
     const tagRepository = dataSource.getRepository(Tag);
 
-    const { user, tags, ...adData } = req.body;
-
-    if (!user || !tags || !adData.title || !adData.description || !adData.price) {
-      res.status(400).json({ error: "Invalid request body format" });
+    const user = await userRepository.findOne({ where: { id: userId } });
+    if (!user) {
+      res.status(404).json({ error: "User not found." });
       return;
     }
 
-    const foundUser = await userRepository.findOne({ where: { id: user } });
-    const foundTags = await tagRepository.findByIds(tags);
+    const foundTags = await tagRepository.findByIds(tags || []);
 
-    if (!foundUser) {
-      res.status(400).json({ error: "Invalid user ID" });
-      return;
-    }
-
-    const newAd = adRepository.create({
-      ...adData,
-      user: foundUser,
+    const ad = adRepository.create({
+      title,
+      description,
+      price,
+      user,
       tags: foundTags,
     });
 
-    const savedAd = await adRepository.save(newAd);
+    const savedAd = await adRepository.save(ad);
 
     res.status(201).json({
       ...savedAd,
       links: [
-        { rel: "self", href: `/api/ads/${savedAd[0].id}` },
-        { rel: "update", href: `/api/ads/${savedAd[0].id}` },
-        { rel: "delete", href: `/api/ads/${savedAd[0].id}` },
+        { rel: "self", href: `/api/ads/${savedAd.id}` },
+        { rel: "update", href: `/api/ads/${savedAd.id}` },
+        { rel: "delete", href: `/api/ads/${savedAd.id}` },
       ],
     });
   } catch (error) {

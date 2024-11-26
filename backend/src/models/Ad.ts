@@ -6,8 +6,8 @@ import {
   ManyToMany,
   JoinTable,
 } from "typeorm";
-import { Tag } from "./Tag";
 import { User } from "./User";
+import { Tag } from "./Tag";
 
 @Entity()
 export class Ad {
@@ -20,13 +20,13 @@ export class Ad {
   @Column()
   description: string;
 
-  @Column()
+  @Column("float")
   price: number;
 
-  @ManyToOne(() => User, (user) => user.ads)
+  @ManyToOne(() => User, (user) => user.ads, { eager: true })
   user: User;
 
-  @ManyToMany(() => Tag, (tag) => tag.ads)
+  @ManyToMany(() => Tag, (tag) => tag.ads, { cascade: true })
   @JoinTable()
   tags: Tag[];
 }

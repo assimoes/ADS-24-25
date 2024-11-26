@@ -1,0 +1,11 @@
+{
+  "type": "sqlite",
+  "database": "classified_ads.db",
+  "synchronize": false,
+  "logging": true,
+  "entities": ["src/models/*.ts"],
+  "migrations": ["src/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
+}
